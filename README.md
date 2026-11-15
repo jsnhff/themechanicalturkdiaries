@@ -11,9 +11,15 @@ Jekyll and served by GitHub Pages.
 - The words are people's own and are not processed: no smart quotes, no dashes, no ellipses. The only
   formatting kept is the italics and links the posts had. Dates are shown in the blog's own timezone
   (US/Eastern), as Tumblr showed them.
-- The look is the **Observer** theme by [Zack Sultan](http://zacksultan.com), which the blog used. The theme
-  set its text in Tumblr's own typefaces, which are Tumblr's to license, so this site sets it in Libre
-  Baskerville ([SIL Open Font License](fonts/OFL.txt)), self-hosted, a little smaller to keep the line length.
+- The layout is the **Observer** theme by [Zack Sultan](http://zacksultan.com), which the blog used. The type is
+  set after Robert Bringhurst's *The Elements of Typographic Style*, in EB Garamond ([SIL Open Font
+  License](fonts/OFL.txt)): a measure of about 66 characters (measured, not guessed), 1.4 leading with every
+  vertical space a multiple of a line, sizes on a perfect-fifth scale, indented paragraphs with no gap between,
+  small capitals and letterspacing for capitals only, old-style figures in the text. The rules, and the reason for
+  each, are in the comment at the top of `css/site.css`. The font is subset from the full release with its small
+  capitals and figures kept; the copy Google serves has those removed.
+- Apostrophes and quotation marks in story titles are set as typographer's marks (the source had straight ones).
+  Nothing in a story's own text is changed: its straight marks are feet and inches.
 - Tumblr's Ask box and its notes (who liked or reblogged a story) are not here; the posts' note counts are.
 
 ## Run it

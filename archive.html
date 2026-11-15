@@ -12,7 +12,7 @@ permalink: /archive/
     <h2>{{ m.items.first.date | date: "%B %Y" }}</h2>
     <ul>
     {% for post in m.items %}
-      <li><a href="{{ post.url | relative_url }}">{{ post.title }}</a> <span class="metadata-inline">{{ post.shown }}</span></li>
+      <li><a href="{{ post.url | relative_url }}">{{ post.title }}</a><span class="lead" aria-hidden="true"></span><span class="metadata-inline">{{ post.shown }}</span></li>
     {% endfor %}
     </ul>
   {% endfor %}

@@ -55,6 +55,17 @@ def paragraphs(body):
     return "\n".join(out)
 
 
+def set_title(t):
+    """A title's apostrophes and quotation marks as a typographer sets them. The words are untouched;
+    the body of a story is not touched at all (its straight marks are feet and inches, which are right)."""
+    t = re.sub(r"(^|[\s(\[])'(?=\w)", "\\1\u2018", t)               # an opening single quote: 'diaspora'
+    t = re.sub(r"(?<=\w)'(?=\w)", "\u2019", t)                 # don't, Amazon's
+    t = re.sub(r"(?<=\w)'(?=[\s.,;:!?)]|$)", "\u2019", t)       # a closing apostrophe
+    t = re.sub(r'(^|[\s(\[])"', "\\1\u201c", t)                 # an opening double quote
+    t = t.replace('"', "\u201d")                                   # the rest close
+    return t
+
+
 def ordinal_date(dt):
     # "Feb. 27 2014": the short month, a full stop, the day, the year
     return "%s. %d %d" % (dt.strftime("%b"), dt.day, dt.year)
@@ -76,6 +87,7 @@ def main(src):
         for k, v in re.findall(r"^(\w+): (.*)$", fm, re.M):
             meta[k] = v
         title = re.sub(r'\\(["\\])', r"\1", meta["title"][1:-1])
+        title = set_title(title)
         tid = meta["id"].strip('"')
         when = datetime.strptime(meta["date"].replace(" GMT", ""), "%Y-%m-%d %H:%M:%S").replace(tzinfo=UTC)
         local = when.astimezone(ET)

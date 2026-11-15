@@ -1,113 +1,161 @@
-/* The look of the blog as it stood on Tumblr, in the "Observer" theme by Zack Sultan: white page,
-   a narrow serif column, centred titles, grey hairlines and small capitals for the date.
-   Every measure here is the theme's own. What differs is the typeface: the theme set its text in
-   Tumblr's Bookmania and Clearface, which are Tumblr's to license, so this uses Libre Baskerville
-   (SIL Open Font License), self-hosted, in their place. */
+/* The Mechanical Turk Diaries.
 
-@font-face { font-family: "Libre Baskerville"; font-style: normal; font-weight: 400 700; font-display: swap;
-  src: url("../fonts/LibreBaskerville-latin-ext.woff2") format("woff2");
-  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF; }
-@font-face { font-family: "Libre Baskerville"; font-style: normal; font-weight: 400 700; font-display: swap;
-  src: url("../fonts/LibreBaskerville-latin.woff2") format("woff2");
-  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD; }
-@font-face { font-family: "Libre Baskerville"; font-style: italic; font-weight: 400 700; font-display: swap;
-  src: url("../fonts/LibreBaskerville-italic-latin-ext.woff2") format("woff2");
-  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF; }
-@font-face { font-family: "Libre Baskerville"; font-style: italic; font-weight: 400 700; font-display: swap;
-  src: url("../fonts/LibreBaskerville-italic-latin.woff2") format("woff2");
-  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD; }
+   The layout is the blog's own, from the Observer theme by Zack Sultan: white page, one narrow column,
+   centred titles, hairlines. The type is set after Robert Bringhurst's The Elements of Typographic Style:
 
-::selection { background: #78c9a1; color: #333333; }
-::-moz-selection { background: #78c9a1; color: #333333; }
+   - a measure of about 66 characters, within the 45 to 75 he allows for a single column of text
+   - a size and a leading chosen together, 1.4 here; every vertical space is a multiple of one line
+   - sizes on a scale, here the perfect fifth (1, 1.5, 2.25), not picked one at a time
+   - paragraphs after the first are indented by an em and not also separated by a space
+   - old-style figures in running text, lining and tabular ones where numbers are to be compared
+   - small capitals and letterspaced capitals for words that are set in capitals, and no letterspacing
+     for lower case, ever
+   - real ligatures and kerning, ragged right, no justification, no hyphenation on a screen this wide
+   - hairlines thin and short, and used to divide, not to box
+   - one family, in its roman, italic and small capitals, instead of several that disagree
 
+   The face is EB Garamond (SIL Open Font License), self-hosted and subset with its small capitals and
+   old-style figures kept: the copy Google serves has had those features removed. */
+
+@font-face { font-family: "EB Garamond"; font-style: normal; font-weight: 400 800; font-display: swap;
+  src: url("../fonts/EBGaramond.woff2") format("woff2"); }
+@font-face { font-family: "EB Garamond"; font-style: italic; font-weight: 400 800; font-display: swap;
+  src: url("../fonts/EBGaramond-Italic.woff2") format("woff2"); }
+
+:root {
+  --ink: #1f1f1f;
+  --dim: #707070;
+  --hair: rgba(0, 0, 0, 0.14);
+  --size: 1.1875rem;                       /* 19px: Garamond is small for its body */
+  --lh: 1.4;
+  --u: calc(var(--size) * var(--lh));      /* one line of text: the unit every vertical space is counted in */
+  --fifth: 1.5;                            /* the perfect fifth */
+  --measure: 27em;                         /* about 66 characters of this face at this size (measured: 67) */
+}
+
+::selection { background: #78c9a1; color: #1f1f1f; }
+
+html { -webkit-text-size-adjust: 100%; }
 body {
   margin: 0;
-  padding: 0;
-  font-size: 18px;
-  font-family: "Libre Baskerville", Georgia, "Times New Roman", serif;
-  font-weight: normal;
-  color: #333333;
-  background-color: #ffffff;
+  font-family: "EB Garamond", Garamond, "Times New Roman", serif;
+  font-size: var(--size);
+  line-height: var(--lh);
+  font-weight: 440;                        /* a hair over regular: Garamond is light on a screen */
+  color: var(--ink);
+  background: #fff;
+  font-kerning: normal;
+  font-variant-ligatures: common-ligatures;
+  font-variant-numeric: oldstyle-nums proportional-nums;
+  text-rendering: optimizeLegibility;
+  hyphens: manual;
   -webkit-font-smoothing: antialiased;
-  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  -webkit-tap-highlight-color: transparent;
 }
-p, li, blockquote { line-height: 28px; margin: 0; }
-h1, h2, h3 { margin: 0; padding: 0; font-weight: 400; font-size: 30px; }
+p, ul, ol, h1, h2, h3 { margin: 0; padding: 0; }
+h1, h2, h3 { font-weight: 400; text-wrap: balance; }
 
-a { color: #333333; text-decoration: none; border-bottom: 1px solid rgba(136, 136, 136, 0.3); }
-a:active { position: relative; outline: none; top: 1px; }
-a:focus-visible { outline: 2px solid #78c9a1; outline-offset: 3px; }
-
-/* page */
-#page { max-width: 900px; padding-left: 50px; padding-right: 50px; margin: auto; }
-
-/* header: the three links across the top, then the title and what the blog is */
-#header { margin-top: 20px; margin-bottom: 80px; display: block; overflow: visible; }
-#header a { text-decoration: none; }
-.links { margin-top: 0; text-align: center; float: none; border-bottom: 1px solid rgba(136, 136, 136, 0.2); }
-.links ul { margin-top: 10px; padding: 0; display: block; text-align: center; float: none; list-style: none; }
-.links li { display: inline; margin-left: 10px; text-transform: none; }
-.links li:first-child { margin-left: 0; }
-.links a { border-bottom: none; color: #888888; }
-.links a:hover { color: #333333; }
-.blog-title { display: block; width: 100%; text-align: center; margin-top: 70px; }
-.blog-title a { border-bottom: none; }
-.blog-title h1 { font-size: 2.75em; line-height: 1em; letter-spacing: 0.02em; }
-#header h1 a { color: #222222; border-bottom: none; }
-.blog-description { color: #888888; font-size: 1.15em; line-height: 1.15em; margin-top: 20px; }
-
-/* stories */
-#content { width: 100%; overflow-x: hidden; clear: both; }
-.post { margin-bottom: 45px; padding-bottom: 40px; width: 100%; border-bottom: 1px solid rgba(136, 136, 136, 0.2); }
-.narrow { max-width: 640px; margin: auto; }
-.title h1 { text-align: center; margin: auto auto 25px; font-size: 2.15em; line-height: 1; letter-spacing: 0.02em; }
-.caption p { font-size: 16px; line-height: 26px; margin-bottom: 15px; }
-.caption a { border-bottom: 1px solid rgba(136, 136, 136, 0.3); }
-
-/* the line under a story: its date, and how many notes it had */
-.metadata { border: 0 solid gray; overflow: auto; font-size: 12px; text-transform: uppercase; margin-top: 20px; }
-.metadata a { color: #888888; text-decoration: none; border-bottom: none; }
-.metadata a:hover { color: #333333; }
-.date, .notes-count { display: block; float: left; margin-right: 15px; }
-.date a, .notes-count a { margin-right: 5px; }
-
-/* paging, and the archive (neither was a page of its own on Tumblr: it used an infinite scroll and an app) */
-.pagination { text-align: center; margin: 0 0 45px; color: #888888; font-size: 14px; }
-.pagination a { margin: 0 10px; color: #333333; }
-.pagination .page-of { margin: 0 10px; font-size: 12px; text-transform: uppercase; }
-.archive .title h1 { margin-bottom: 8px; }
-.archive-count { text-align: center; color: #888888; font-size: 14px; margin-bottom: 50px; }
-.archive h2 { font-size: 24px; margin: 44px 0 14px; padding-top: 22px; border-top: 1px solid rgba(136, 136, 136, 0.2); }
-.archive h2:first-of-type { border-top: 0; padding-top: 0; }
-.archive ul { margin: 0; padding: 0; list-style: none; }
-.archive li { padding: 3px 0; font-size: 16px; line-height: 24px; }
-.archive .metadata-inline { display: inline-block; margin-left: 8px; font-size: 11px; text-transform: uppercase; color: #888888; white-space: nowrap; }
-
-/* footer */
-#footer { text-align: center; margin-bottom: 40px; }
-#footer a { text-decoration: none; border-bottom: none; }
-#footer-links ul { margin-bottom: 0; padding: 0; display: block; text-align: center; list-style: none; }
-#footer-links li { display: inline; margin-left: 5px; font-size: 14px; }
-#footer-links li:first-child { margin-left: 0; }
-#footer-links a, #footer p.promo a { color: #888888; }
-#footer .colophon p { font-size: 14px; font-style: italic; margin-top: 10px; }
-#footer p.promo { font-size: 12px; text-transform: uppercase; font-style: normal; }
-
-/* the theme's break-points */
-@media screen and (max-width: 800px) {
-  #header { margin-top: 20px; display: block; overflow: visible; padding-bottom: 0; }
-  .blog-title { display: block; text-align: center; margin-top: 50px; float: none; width: 100%; margin-bottom: 50px; }
-  .blog-title h1 { font-size: 2.6em; margin-bottom: 10px; }
-  .blog-description { font-size: 1em; line-height: 1.15em; }
-  .links { margin-top: 0; margin-bottom: 0; border-bottom: 1px solid rgba(136, 136, 136, 0.4); }
-  .links li { margin-left: 16px; font-size: 17px; }
-  .metadata { font-size: 16px; }
-  .title h1 { font-size: 36px; line-height: 42px; }
+/* Links are underlined thinly, below the descenders, in the colour of the text. */
+a {
+  color: inherit;
+  text-decoration: underline;
+  text-decoration-thickness: 0.055em;
+  text-decoration-color: rgba(0, 0, 0, 0.32);
+  text-underline-offset: 0.17em;
+  text-decoration-skip-ink: auto;
 }
+a:hover { text-decoration-color: currentColor; }
+a:focus-visible { outline: 2px solid #78c9a1; outline-offset: 3px; border-radius: 2px; }
+
+/* The words set in capitals are small capitals, and letterspaced: a tenth of an em or so. */
+.sc { font-variant-caps: all-small-caps; font-variant-numeric: lining-nums; letter-spacing: 0.08em; }
+
+#page { max-width: 46rem; margin: 0 auto; padding: 0 1.5rem; }
+
+/* ---- the head of every page ------------------------------------------------ */
+#header { margin: var(--u) 0 calc(var(--u) * 3); }
+.links { text-align: center; padding-bottom: calc(var(--u) * 0.5); border-bottom: 1px solid var(--hair); }
+.links ul { list-style: none; }
+.links li { display: inline; margin: 0 0.9em; font-size: 0.95em; font-variant-caps: all-small-caps; letter-spacing: 0.1em; }
+.links a { text-decoration: none; color: var(--dim); }
+.links a:hover { color: var(--ink); }
+
+.blog-title { text-align: center; margin-top: calc(var(--u) * 3); }
+.blog-title h1 {
+  font-size: calc(var(--size) * 2);
+  line-height: calc(var(--u) * 1.5);
+  font-variant-caps: all-small-caps;
+  font-variant-numeric: lining-nums;
+  letter-spacing: 0.075em;
+  font-weight: 420;
+}
+.blog-title a { text-decoration: none; }
+.blog-description {
+  max-width: 31em; margin: var(--u) auto 0;
+  font-style: italic; color: var(--dim);
+  font-size: 1.02em; line-height: var(--lh);
+  text-wrap: balance;
+}
+
+/* ---- the stories ------------------------------------------------------------ */
+#content { width: 100%; }
+.narrow { max-width: var(--measure); margin-left: auto; margin-right: auto; }
+.post { margin-bottom: calc(var(--u) * 4); }
+.post:not(:last-child)::after {           /* a short rule between stories, not a line across the page */
+  content: ""; display: block; width: 2.5em; margin: calc(var(--u) * 4) auto 0; border-top: 1px solid var(--hair);
+}
+.title h1 {
+  text-align: center;
+  font-size: calc(var(--size) * var(--fifth));
+  line-height: calc(var(--u) * 4 / 3);
+  margin: 0 auto var(--u);
+  font-weight: 400;
+}
+.caption p { margin: 0; text-wrap: pretty; hanging-punctuation: first; }
+.caption p + p { text-indent: 1.2em; }     /* indent, and no space: one or the other, not both */
+
+/* the line under a story: its date in small capitals, and its notes */
+.metadata { margin-top: var(--u); font-size: 0.92em; color: var(--dim); display: flex; gap: 1.2em; }
+.metadata a { text-decoration: none; font-variant-caps: all-small-caps; font-variant-numeric: lining-nums; letter-spacing: 0.08em; }
+.metadata a:hover { color: var(--ink); }
+.date, .notes-count { display: block; }
+
+/* ---- paging and the archive ------------------------------------------------- */
+.pagination { text-align: center; margin: 0 0 calc(var(--u) * 3); color: var(--dim); }
+.pagination a { font-variant-caps: all-small-caps; letter-spacing: 0.1em; text-decoration: none; margin: 0 1em; color: var(--ink); }
+.pagination a:hover { text-decoration: underline; text-underline-offset: 0.2em; }
+.pagination .page-of { font-style: italic; font-size: 0.95em; margin: 0 0.4em; }
+
+.archive .title h1 { margin-bottom: calc(var(--u) * 0.25); }
+.archive-count { text-align: center; color: var(--dim); font-style: italic; margin: 0 0 calc(var(--u) * 2); }
+.archive h2 {
+  font-size: 1em; font-weight: 440; font-variant-caps: all-small-caps; font-variant-numeric: lining-nums; letter-spacing: 0.12em;
+  margin: calc(var(--u) * 2) 0 calc(var(--u) * 0.5); padding-top: calc(var(--u) * 0.5); border-top: 1px solid var(--hair);
+}
+.archive h2:first-of-type { border-top: 0; padding-top: 0; margin-top: 0; }
+.archive ul { list-style: none; }
+.archive li { display: flex; align-items: baseline; gap: 0.5em; line-height: calc(var(--u) * 1.1); }
+.archive li a { text-decoration: none; flex: 0 1 auto; }
+.archive li a:hover { text-decoration: underline; }
+.archive li .lead { flex: 1 1 1.5em; min-width: 1em; border-bottom: 1px dotted rgba(0, 0, 0, 0.3); transform: translateY(-0.28em); }
+.archive li .metadata-inline { flex: 0 0 auto; font-size: 0.9em; color: var(--dim); font-variant-caps: all-small-caps; font-variant-numeric: lining-nums tabular-nums; letter-spacing: 0.07em; white-space: nowrap; }
+
+/* ---- the foot ----------------------------------------------------------------- */
+#footer { text-align: center; margin: calc(var(--u) * 2) 0 calc(var(--u) * 2); padding-top: var(--u); border-top: 1px solid var(--hair); }
+#footer-links ul { list-style: none; }
+#footer-links li { display: inline; margin: 0 0.9em; font-size: 0.95em; font-variant-caps: all-small-caps; letter-spacing: 0.1em; }
+#footer a { text-decoration: none; color: var(--dim); }
+#footer a:hover { color: var(--ink); }
+#footer .colophon p { margin-top: calc(var(--u) * 0.75); font-size: 0.88em; font-style: italic; color: var(--dim); }
+
+/* ---- smaller screens: the same rules, with the size brought down so the measure stays in range ---- */
 @media screen and (max-width: 740px) {
-  #page { padding-left: 1em; padding-right: 1em; }
-  #header { margin-bottom: 50px; }
-  .blog-title h1 { font-size: 2.05em; }
-  .title h1 { font-size: 1.75em; line-height: 1; }
+  :root { --size: 1.0625rem; }
+  #page { padding: 0 1.25rem; }
+  .blog-title h1 { font-size: calc(var(--size) * 1.7); }
+  .title h1 { font-size: calc(var(--size) * 1.35); }
+  .caption p { hyphens: auto; hyphenate-limit-chars: 8 3 3; hyphenate-limit-lines: 2; }  /* only long words, never more than two lines running */
+  .links li { margin: 0 0.6em; }
 }
-@media (prefers-reduced-motion: reduce) { a:active { top: 0; } }
+@media (prefers-reduced-motion: reduce) { * { scroll-behavior: auto !important; } }
+@media print { a { text-decoration: none; } .links, #footer { display: none; } body { font-size: 11pt; } }
