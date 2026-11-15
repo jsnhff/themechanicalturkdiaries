@@ -1,0 +1,15 @@
+---
+layout: default
+---
+{%- comment -%} The home pages: ten stories at a time, newest first, at /, /page/2/, /page/3/ ... {%- endcomment -%}
+{% for post in paginator.posts %}
+{% include story.html post=post body=post.content %}
+{% endfor %}
+
+{% if paginator.total_pages > 1 %}
+<div class="pagination">
+  {% if paginator.next_page %}<a class="back-next" href="{{ paginator.next_page_path | relative_url }}">&larr; Older stories</a>{% endif %}
+  <span class="page-of">Page {{ paginator.page }} of {{ paginator.total_pages }}</span>
+  {% if paginator.previous_page %}<a class="back-next" href="{{ paginator.previous_page_path | relative_url }}">Newer stories &rarr;</a>{% endif %}
+</div>
+{% endif %}

@@ -1,0 +1,113 @@
+/* The look of the blog as it stood on Tumblr, in the "Observer" theme by Zack Sultan: white page,
+   a narrow serif column, centred titles, grey hairlines and small capitals for the date.
+   Every measure here is the theme's own. What differs is the typeface: the theme set its text in
+   Tumblr's Bookmania and Clearface, which are Tumblr's to license, so this uses Libre Baskerville
+   (SIL Open Font License), self-hosted, in their place. */
+
+@font-face { font-family: "Libre Baskerville"; font-style: normal; font-weight: 400 700; font-display: swap;
+  src: url("../fonts/LibreBaskerville-latin-ext.woff2") format("woff2");
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF; }
+@font-face { font-family: "Libre Baskerville"; font-style: normal; font-weight: 400 700; font-display: swap;
+  src: url("../fonts/LibreBaskerville-latin.woff2") format("woff2");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD; }
+@font-face { font-family: "Libre Baskerville"; font-style: italic; font-weight: 400 700; font-display: swap;
+  src: url("../fonts/LibreBaskerville-italic-latin-ext.woff2") format("woff2");
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF; }
+@font-face { font-family: "Libre Baskerville"; font-style: italic; font-weight: 400 700; font-display: swap;
+  src: url("../fonts/LibreBaskerville-italic-latin.woff2") format("woff2");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD; }
+
+::selection { background: #78c9a1; color: #333333; }
+::-moz-selection { background: #78c9a1; color: #333333; }
+
+body {
+  margin: 0;
+  padding: 0;
+  font-size: 18px;
+  font-family: "Libre Baskerville", Georgia, "Times New Roman", serif;
+  font-weight: normal;
+  color: #333333;
+  background-color: #ffffff;
+  -webkit-font-smoothing: antialiased;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+p, li, blockquote { line-height: 28px; margin: 0; }
+h1, h2, h3 { margin: 0; padding: 0; font-weight: 400; font-size: 30px; }
+
+a { color: #333333; text-decoration: none; border-bottom: 1px solid rgba(136, 136, 136, 0.3); }
+a:active { position: relative; outline: none; top: 1px; }
+a:focus-visible { outline: 2px solid #78c9a1; outline-offset: 3px; }
+
+/* page */
+#page { max-width: 900px; padding-left: 50px; padding-right: 50px; margin: auto; }
+
+/* header: the three links across the top, then the title and what the blog is */
+#header { margin-top: 20px; margin-bottom: 80px; display: block; overflow: visible; }
+#header a { text-decoration: none; }
+.links { margin-top: 0; text-align: center; float: none; border-bottom: 1px solid rgba(136, 136, 136, 0.2); }
+.links ul { margin-top: 10px; padding: 0; display: block; text-align: center; float: none; list-style: none; }
+.links li { display: inline; margin-left: 10px; text-transform: none; }
+.links li:first-child { margin-left: 0; }
+.links a { border-bottom: none; color: #888888; }
+.links a:hover { color: #333333; }
+.blog-title { display: block; width: 100%; text-align: center; margin-top: 70px; }
+.blog-title a { border-bottom: none; }
+.blog-title h1 { font-size: 2.75em; line-height: 1em; letter-spacing: 0.02em; }
+#header h1 a { color: #222222; border-bottom: none; }
+.blog-description { color: #888888; font-size: 1.15em; line-height: 1.15em; margin-top: 20px; }
+
+/* stories */
+#content { width: 100%; overflow-x: hidden; clear: both; }
+.post { margin-bottom: 45px; padding-bottom: 40px; width: 100%; border-bottom: 1px solid rgba(136, 136, 136, 0.2); }
+.narrow { max-width: 640px; margin: auto; }
+.title h1 { text-align: center; margin: auto auto 25px; font-size: 2.15em; line-height: 1; letter-spacing: 0.02em; }
+.caption p { font-size: 16px; line-height: 26px; margin-bottom: 15px; }
+.caption a { border-bottom: 1px solid rgba(136, 136, 136, 0.3); }
+
+/* the line under a story: its date, and how many notes it had */
+.metadata { border: 0 solid gray; overflow: auto; font-size: 12px; text-transform: uppercase; margin-top: 20px; }
+.metadata a { color: #888888; text-decoration: none; border-bottom: none; }
+.metadata a:hover { color: #333333; }
+.date, .notes-count { display: block; float: left; margin-right: 15px; }
+.date a, .notes-count a { margin-right: 5px; }
+
+/* paging, and the archive (neither was a page of its own on Tumblr: it used an infinite scroll and an app) */
+.pagination { text-align: center; margin: 0 0 45px; color: #888888; font-size: 14px; }
+.pagination a { margin: 0 10px; color: #333333; }
+.pagination .page-of { margin: 0 10px; font-size: 12px; text-transform: uppercase; }
+.archive .title h1 { margin-bottom: 8px; }
+.archive-count { text-align: center; color: #888888; font-size: 14px; margin-bottom: 50px; }
+.archive h2 { font-size: 24px; margin: 44px 0 14px; padding-top: 22px; border-top: 1px solid rgba(136, 136, 136, 0.2); }
+.archive h2:first-of-type { border-top: 0; padding-top: 0; }
+.archive ul { margin: 0; padding: 0; list-style: none; }
+.archive li { padding: 3px 0; font-size: 16px; line-height: 24px; }
+.archive .metadata-inline { display: inline-block; margin-left: 8px; font-size: 11px; text-transform: uppercase; color: #888888; white-space: nowrap; }
+
+/* footer */
+#footer { text-align: center; margin-bottom: 40px; }
+#footer a { text-decoration: none; border-bottom: none; }
+#footer-links ul { margin-bottom: 0; padding: 0; display: block; text-align: center; list-style: none; }
+#footer-links li { display: inline; margin-left: 5px; font-size: 14px; }
+#footer-links li:first-child { margin-left: 0; }
+#footer-links a, #footer p.promo a { color: #888888; }
+#footer .colophon p { font-size: 14px; font-style: italic; margin-top: 10px; }
+#footer p.promo { font-size: 12px; text-transform: uppercase; font-style: normal; }
+
+/* the theme's break-points */
+@media screen and (max-width: 800px) {
+  #header { margin-top: 20px; display: block; overflow: visible; padding-bottom: 0; }
+  .blog-title { display: block; text-align: center; margin-top: 50px; float: none; width: 100%; margin-bottom: 50px; }
+  .blog-title h1 { font-size: 2.6em; margin-bottom: 10px; }
+  .blog-description { font-size: 1em; line-height: 1.15em; }
+  .links { margin-top: 0; margin-bottom: 0; border-bottom: 1px solid rgba(136, 136, 136, 0.4); }
+  .links li { margin-left: 16px; font-size: 17px; }
+  .metadata { font-size: 16px; }
+  .title h1 { font-size: 36px; line-height: 42px; }
+}
+@media screen and (max-width: 740px) {
+  #page { padding-left: 1em; padding-right: 1em; }
+  #header { margin-bottom: 50px; }
+  .blog-title h1 { font-size: 2.05em; }
+  .title h1 { font-size: 1.75em; line-height: 1; }
+}
+@media (prefers-reduced-motion: reduce) { a:active { top: 0; } }

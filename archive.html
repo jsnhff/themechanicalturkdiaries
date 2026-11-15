@@ -1,0 +1,19 @@
+---
+layout: default
+title: Archive
+permalink: /archive/
+---
+{%- comment -%} Every story, by month, newest first. Tumblr's archive was an app; this is a list. {%- endcomment -%}
+<div class="narrow archive">
+  <div class="title"><h1>Archive</h1></div>
+  <p class="archive-count">{{ site.posts.size }} stories, {{ site.posts.last.shown | split: ' ' | last }} to {{ site.posts.first.shown | split: ' ' | last }}</p>
+  {% assign months = site.posts | group_by: "month" %}
+  {% for m in months %}
+    <h2>{{ m.items.first.date | date: "%B %Y" }}</h2>
+    <ul>
+    {% for post in m.items %}
+      <li><a href="{{ post.url | relative_url }}">{{ post.title }}</a> <span class="metadata-inline">{{ post.shown }}</span></li>
+    {% endfor %}
+    </ul>
+  {% endfor %}
+</div>

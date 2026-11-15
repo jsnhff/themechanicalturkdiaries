@@ -1,0 +1,21 @@
+{%- comment -%} One story: its title, its words, and the line under it. Used on the home pages and on a story's own page; `body` is its words. {%- endcomment -%}
+<div class="post text">
+  <div class="narrow">
+    <div class="title">
+      <h1>{{ include.post.title }}</h1>
+    </div>
+    <div class="caption">
+{{ include.body }}
+    </div>
+    <div class="metadata">
+      <div class="date">
+        <a href="{{ include.post.url | relative_url }}">{{ include.post.shown }}</a>
+      </div>
+      {%- if include.post.notes > 0 %}
+      <div class="notes-count">
+        <a href="{{ include.post.url | relative_url }}">{{ include.post.notes }} note{% if include.post.notes != 1 %}s{% endif %}</a>
+      </div>
+      {%- endif %}
+    </div>
+  </div>
+</div>

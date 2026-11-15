@@ -1,0 +1,21 @@
+---
+layout: default
+title: Not found
+permalink: /404.html
+---
+<div class="post text">
+  <div class="narrow">
+    <div class="title"><h1>Not found</h1></div>
+    <div class="caption" id="lost">
+      <p>There is nothing at this address. Try the <a href="{{ '/archive/' | relative_url }}">archive</a>, or go back to the <a href="{{ '/' | relative_url }}">first page</a>.</p>
+    </div>
+  </div>
+</div>
+<script>
+  // Tumblr gave a story two addresses: /post/<id> and /post/<id>/<words-from-the-title>. Old links
+  // use either; a static site has only the first, so the second is sent there.
+  (function () {
+    var m = location.pathname.match(/\/post\/(\d+)(?:\/|$)/);
+    if (m) location.replace('{{ "/post/" | relative_url }}' + m[1] + '/');
+  })();
+</script>

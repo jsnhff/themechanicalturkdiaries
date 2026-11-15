@@ -1,0 +1,45 @@
+title: The Mechanical Turk Diaries
+description: "Stories from Amazon's Anonymous Workforce. Are crowdsourcing platforms like Amazon’s Mechanical Turk as bleak as the company’s shipping warehouses?"
+url: "https://themechanicalturkdiaries.com"
+
+# Where the site is served from. While it is previewed at a project address this is the repo's
+# name, so every link carries it. When themechanicalturkdiaries.com is attached (see the README)
+# it becomes "" and a CNAME file is added.
+baseurl: "/themechanicalturkdiaries"
+
+timezone: America/New_York
+
+# Ten stories a page, as the blog had, at the same /page/N/ addresses.
+paginate: 10
+paginate_path: "/page/:num/"
+
+plugins:
+  - jekyll-paginate
+  - jekyll-sitemap
+  - jekyll-feed
+
+# These are people's own words; nothing here should change them. Posts are written as HTML and
+# are not processed, but any Markdown page added later keeps its quotes, dashes and ellipses as typed.
+kramdown:
+  input: GFM
+  smart_quotes: apos,apos,quot,quot
+  typographic_symbols:
+    hellip: "..."
+    mdash: "--"
+    ndash: "-"
+    laquo: "<<"
+    raquo: ">>"
+    laquo_space: "<< "
+    raquo_space: " >>"
+
+defaults:
+  - scope: { path: "", type: posts }
+    values: { layout: post }
+
+exclude:
+  - README.md
+  - Gemfile
+  - Gemfile.lock
+  - tools
+  - vendor
+  - .ruby-version

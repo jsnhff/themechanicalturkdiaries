@@ -1,0 +1,9 @@
+_site/
+.sass-cache/
+.jekyll-cache/
+.jekyll-metadata
+vendor/
+.bundle/
+# local Ruby version (rbenv); GitHub Pages builds with its own
+.ruby-version
+.DS_Store
