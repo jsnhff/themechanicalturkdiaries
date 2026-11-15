@@ -5,7 +5,7 @@ url: "https://themechanicalturkdiaries.com"
 # Where the site is served from. While it is previewed at a project address this is the repo's
 # name, so every link carries it. When themechanicalturkdiaries.com is attached (see the README)
 # it becomes "" and a CNAME file is added.
-baseurl: "/themechanicalturkdiaries"
+baseurl: ""
 
 timezone: America/New_York
 

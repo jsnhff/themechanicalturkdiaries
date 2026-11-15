@@ -29,12 +29,12 @@ bundle install
 bundle exec jekyll serve
 ```
 
-Then open <http://127.0.0.1:4000/themechanicalturkdiaries/>.
+Then open <http://127.0.0.1:4000/>.
 
 ## Put it on themechanicalturkdiaries.com
 
-The site is first served at a project address, so `baseurl` in `_config.yml` is `/themechanicalturkdiaries`.
-To serve it from the domain instead:
+The site is served from the domain (`baseurl` is empty and the `CNAME` file names it). It was first previewed at a
+project address, with `baseurl: /themechanicalturkdiaries`. The steps that moved it:
 
 1. Set `baseurl: ""` in `_config.yml`, and add a file named `CNAME` containing `themechanicalturkdiaries.com`.
 2. In Cloudflare DNS, replace the proxied `A` record pointing at Tumblr (`66.6.44.4`) with four `A` records for
